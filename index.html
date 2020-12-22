@@ -35,9 +35,8 @@
     <script>
       var price = document.querySelector(".price");
       function newPrice(res) {
-        price.textContent = `${JSON.parse(
-          res.target.response
-        ).bitcoin.usd.toLocaleString()} $`;
+        price.textContent =
+          JSON.parse(res.target.response).bitcoin.usd.toLocaleString() + " $";
       }
       function requestPrice() {
         var fetchPrice = new XMLHttpRequest();
