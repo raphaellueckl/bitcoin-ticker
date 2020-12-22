@@ -8,6 +8,25 @@
     <title>Bitcoin Price</title>
   </head>
 
+  <style>
+    html,
+    body {
+      height: 100%;
+    }
+    article {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    h1 {
+      font-size: 70px;
+    }
+    span {
+      font-size: 80px;
+    }
+  </style>
   <body>
     <article>
       <h1>Bitcoin</h1>
@@ -16,7 +35,9 @@
     <script>
       var price = document.querySelector(".price");
       function newPrice(res) {
-        price.textContent = JSON.parse(res.target.response).bitcoin.usd;
+        price.textContent = `${JSON.parse(
+          res.target.response
+        ).bitcoin.usd.toLocaleString()} $`;
       }
       function requestPrice() {
         var fetchPrice = new XMLHttpRequest();
