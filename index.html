@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Bitcoin Price</title>
+  </head>
+
+  <body>
+    <article>
+      <h1>Bitcoin</h1>
+      <span class="price"></span>
+    </article>
+    <script>
+      var price = document.getElementsByClassName("price");
+      function newPrice(res) {
+        console.log(JSON.parse(res.target.response).bitcoin.usd);
+        // JSON.parse(res.target.response).bitcoin.usd;
+        debugger;
+        price.textContent = JSON.parse(res.target.response).bitcoin.usd;
+      }
+      setInterval(function () {
+        var oReq = new XMLHttpRequest();
+        oReq.addEventListener("load", newPrice);
+        oReq.open(
+          "GET",
+          "https://api.coingecko.com/api/v3/simple/price?vs_currencies=usd&ids=bitcoin"
+        );
+        oReq.send();
+      }, 3000 /*120000*/);
+    </script>
+  </body>
+</html>
