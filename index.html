@@ -19,24 +19,35 @@
       text-align: center;
     }
     h1 {
-      font-size: 70px;
+      font-size: 50px;
       margin-block-start: 0;
       margin-block-end: 0;
     }
-    span {
+    p {
+      margin-block-start: 0;
+      margin-block-end: 0;
+    }
+    .price {
       font-size: 80px;
+      margin: 50px 0;
     }
   </style>
   <body>
     <article>
       <h1>Bitcoin</h1>
-      <span class="price"></span>
+      <p class="price"></p>
+      <p class="last-update"></p>
     </article>
     <script>
+      var DOLLAR = "$";
+      var LAST_UPDATE = "Last update: ";
       var price = document.querySelector(".price");
+      var lastUpdate = document.querySelector(".last-update");
       function newPrice(res) {
         price.textContent =
-          JSON.parse(res.target.response).bitcoin.usd.toLocaleString() + " $";
+          JSON.parse(res.target.response).bitcoin.usd.toLocaleString() + DOLLAR;
+        lastUpdate.textContent =
+          LAST_UPDATE + new Date().toLocaleString("de-de");
       }
       function requestPrice() {
         var fetchPrice = new XMLHttpRequest();
@@ -50,7 +61,7 @@
       requestPrice();
       setInterval(function () {
         requestPrice();
-      }, 30000 /*120000*/);
+      }, /*30000*/ 120000);
     </script>
   </body>
 </html>
