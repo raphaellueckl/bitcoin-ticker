@@ -45,7 +45,7 @@
       var lastUpdate = document.querySelector(".last-update");
       function newPrice(res) {
         var newestPrice = JSON.parse(res.target.response).bitcoin.usd.toLocaleString() + DOLLAR;
-        document.head.querySelector("title") = newestPrice;
+        document.title = newestPrice;
         price.textContent = newestPrice;
         lastUpdate.textContent =
           LAST_UPDATE + new Date().toLocaleString("de-de");
