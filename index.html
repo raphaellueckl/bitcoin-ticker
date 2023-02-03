@@ -43,9 +43,11 @@
       var LAST_UPDATE = "Last update: ";
       var price = document.querySelector(".price");
       var lastUpdate = document.querySelector(".last-update");
+      var titleElement = document.head.querySelector("title");
       function newPrice(res) {
-        price.textContent =
-          JSON.parse(res.target.response).bitcoin.usd.toLocaleString() + DOLLAR;
+        var newestPrice = JSON.parse(res.target.response).bitcoin.usd.toLocaleString() + DOLLAR;
+        titleElement = newestPrice;
+        price.textContent = newestPrice;
         lastUpdate.textContent =
           LAST_UPDATE + new Date().toLocaleString("de-de");
       }
